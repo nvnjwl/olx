@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html ng-app="mymap">
+
+<head>
+	<script src="node_modules/angular/angular.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/mymap.js"></script>
+	<script>
+		function initialize() {
+			var myLatLng = {
+				lat: 28.480342,
+				lng: 77.107700
+			};
+
+			var mapProp = {
+				center: new google.maps.LatLng(28.480342, 77.107700),
+				zoom: 7,
+				mapTypeId: google.maps.MapTypeId.ROADMAP
+			};
+			var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+			var marker = new google.maps.Marker({
+				position: myLatLng,
+				map: map,
+				title: 'OLX Listing'
+			});
+
+
+			var citymap = {
+				delhi: {
+					center: {
+						lat: 28.480342,
+						lng: 77.107700
+					},
+					population: 100
+				},
+				gurgoan: {
+					center: {
+						lat: 28.480342,
+						lng: 77.107700
+					},
+					population: 200
+				}
+			};
+
+
+
+			// Construct the circle for each value in citymap.
+			// Note: We scale the area of the circle based on the population.
+			for (var city in citymap) {
+				// Add the circle for this city to the map.
+				var cityCircle = new google.maps.Circle({
+					strokeColor: '#FF0000',
+					strokeOpacity: 0.8,
+					strokeWeight: 2,
+					fillColor: '#FF0000',
+					fillOpacity: 0.35,
+					map: map,
+					center: citymap[city].center,
+					radius: 100
+				});
+			}
+
+		}
+
+
+
+
+
+
+		function loadScript() {
+			var script = document.createElement("script");
+			script.type = "text/javascript";
+			script.src = "http://maps.googleapis.com/maps/api/js?sensor=false&callback=initialize";
+			document.body.appendChild(script);
+		}
+
+		window.onload = loadScript;
+	</script>
+</head>
+
+<body>
+
+	<div ng-controller="mapcontroller">
+
+		<select name="categoty" id="category">
+			<option value="Mobile">Mobile</option>
+			<option value="Cars">Cars</option>
+			<option value="Electronics">Electronics</option>
+		</select>
+
+		<select name="subcategory" id="subcategory">
+			<option value="Note 3">Note 3</option>
+			<option value="Moto Play">Moto Play</option>
+			<option value="Ford">Ford</option>
+			<option value="Audi">Audi</option>
+			<option value="Pendrive">Pendrive</option>
+			<option value="Speakers">Speakers</option>
+		</select>
+		<select name="cityname" id="cityname">
+			<option value="Delhi">Delhi</option>
+			<option value="Mumbai">Mumbai</option>
+			<option value="Gurgoan">Gurgoan</option>
+		</select>
+		<input type="button" onclick="submitCurrent()" value="Submit">
+		<button ng-click="submitCurrent()">Submitt</button>
+
+	</div>
+	<hr>
+	<div id="googleMap" style="width:1280px;height:500px;">
+
+	</div>
+
+</body>
+
+</html>
