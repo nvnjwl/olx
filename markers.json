@@ -1,10 +1,18 @@
 {
-	"markers":[
-		{
-			
-		},
-		{
-			
-		}
-	]
+	"markers": [
+					{
+						"latlong": {
+										"lat": 28.480342,
+										"lng": 77.107700
+									},
+						"title": "title 1"
+					},
+					{
+						"latlong": {
+										"lat": 28.480542,
+										"lng": 77.107700
+									},
+						"title": "title 2"
+					}
+				]
 }

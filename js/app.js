@@ -7,6 +7,7 @@
 		$scope.cities=[];
 		$scope.category=[];
 		$scope.subcategory=[];
+		$scope.markers=[];
 		
 		$scope.submitCurrent = function () {
 			//alert("Function");
@@ -69,5 +70,17 @@
 		});
 		
 
+		$http({
+			url: 'markers.json',
+			method: 'GET',
+			dataType: 'json',
+			data: ''
+		}).success(function (data, status, headers, config) {
+			console.log(JSON.stringify(data, null, 4));
+			$scope.markers=data.markers;
+		}).error(function(){
+			console.log("Some Error Came");
+		});
+		
 	});
 })();
