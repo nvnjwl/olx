@@ -28,13 +28,17 @@ function initialize() {
 	});
 
 
-	var infowindow = new google.maps.InfoWindow({
-		content: '<p>1 Year Old Blue BMW Car for Sale</p>'
+	var infowindow1 = new google.maps.InfoWindow({
+		content: '<p>1 Year Old Samsung S3 Mobile</p>'
 	});
 
+	var infowindow2 = new google.maps.InfoWindow({
+		content: '<p>1 Year Old Blue BMW Car for Sale</p>'
+	});
+	
 
 	marker1.addListener('click', function () {
-		infowindow.open(map, marker1);
+		infowindow1.open(map, marker1);
 	});
 
 
@@ -44,8 +48,11 @@ function initialize() {
 		map: map,
 		title: 'BMW Blue Car'
 	});
-
-
+		
+	marker2.addListener('click', function () {
+		infowindow2.open(map, marker1);
+	});
+	
 	/*for (var i=0 ;i<markers.length;i++) {
 		var marker = new google.maps.Marker({
 		position: markers[i].latlong,

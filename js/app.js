@@ -1,22 +1,23 @@
 (function () {
 	'use strict';
 	var app = angular.module("mymap", []);
-	app.controller("mapcontroller", function ($scope,$http) {
+	app.controller("mapcontroller", function ($scope, $http) {
 
 		$scope.data = "welcome";
-		$scope.cities=[];
-		$scope.category=[];
-		$scope.subcategory=[];
-		$scope.markers=[];
-		
+		$scope.cities = [];
+		$scope.category = [];
+		$scope.subcategory = [];
+		$scope.markers = [];
+
 		$scope.submitCurrent = function () {
 			//alert("Function");
 			var city = document.getElementById("cityname").value;
 			var category = document.getElementById("category").value;
 			var subcategory = document.getElementById("subcategory").value;
-			alert("Function" + city + category + subcategory);
+			alert("Use this Data to filter Markers" + city + category + subcategory);
 		}
 
+		 
 		$http({
 			url: 'http://jsonstub.com/data',
 			method: 'GET',
@@ -29,7 +30,7 @@
 			}
 		}).success(function (data, status, headers, config) {
 			//console.log(JSON.stringify(data, null, 4));
-		}).error(function(){
+		}).error(function () {
 			console.log("Some Error Came");
 		});
 
@@ -40,8 +41,8 @@
 			data: ''
 		}).success(function (data, status, headers, config) {
 			//console.log(JSON.stringify(data, null, 4));
-			$scope.cities=data.cityname;
-		}).error(function(){
+			$scope.cities = data.cityname;
+		}).error(function () {
 			console.log("Some Error Came");
 		});
 
@@ -52,11 +53,11 @@
 			data: ''
 		}).success(function (data, status, headers, config) {
 			//console.log(JSON.stringify(data, null, 4));
-			$scope.category=data.category;
-		}).error(function(){
+			$scope.category = data.category;
+		}).error(function () {
 			console.log("Some Error Came");
 		});
-		
+
 		$http({
 			url: 'subcategory.json',
 			method: 'GET',
@@ -64,11 +65,11 @@
 			data: ''
 		}).success(function (data, status, headers, config) {
 			//console.log(JSON.stringify(data, null, 4));
-			$scope.subcategory=data.subcategory;
-		}).error(function(){
+			$scope.subcategory = data.subcategory;
+		}).error(function () {
 			console.log("Some Error Came");
 		});
-		
+
 
 		$http({
 			url: 'markers.json',
@@ -77,10 +78,10 @@
 			data: ''
 		}).success(function (data, status, headers, config) {
 			console.log(JSON.stringify(data, null, 4));
-			$scope.markers=data.markers;
-		}).error(function(){
+			$scope.markers = data.markers;
+		}).error(function () {
 			console.log("Some Error Came");
 		});
-		
+
 	});
 })();

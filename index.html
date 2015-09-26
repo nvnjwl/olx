@@ -11,7 +11,7 @@
 </head>
 
 <body>
-
+	<hr>
 	<div ng-controller="mapcontroller">
 
 		<select name="category" id="category">
@@ -27,8 +27,8 @@
 			<option  ng-repeat="city in cities "  value="{{city}}">
            {{city}}
 		</select>
-		<input type="button" onclick="submitCurrent()" value="Submit">
-		<button ng-click="submitCurrent()">Submitt</button>
+		
+		<button ng-click="submitCurrent()">Submit</button>
 
 	</div>
 	<hr>
