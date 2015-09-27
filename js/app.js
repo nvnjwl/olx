@@ -15,6 +15,14 @@
 			var category = document.getElementById("category").value;
 			var subcategory = document.getElementById("subcategory").value;
 			alert("Use this Data to filter Markers" + city + category + subcategory);
+			var newmarkers=[];
+			for(i=0;i<markers.length;i++)
+			{
+				if(markers[i].subcategory==subcategory)
+				{
+					newmarkers.push(markers[i]);
+				}
+			}
 		}
 
 		 
